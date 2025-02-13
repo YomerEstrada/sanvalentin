@@ -1,0 +1,241 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #ffe6e9;
+    overflow-x: hidden;
+    
+}
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #C21807; /* Rojo pasión */
+    
+}
+h3{
+    font-family: "Stardos Stencil", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.8rem;  
+}
+h5 {
+    font-family: "Stardos Stencil", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.5rem;
+  }
+
+p{
+    font-family: "Carattere", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+}
+.carta p{
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+
+#sidebar {
+    width: 250px;
+    background: #ff4d6d;
+    color: white;
+    transition: all 0.3s;
+    position: fixed;
+    height: 100%;
+    left: -260px;
+    top: 0;
+    padding-top: 20px;
+    padding-left: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1050;
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#content {
+    flex-grow: 1;
+    padding: 20px;
+    width: 100%;
+    transition: margin-left 0.3s;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #d6336c;
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.toggle-btn:hover {
+    background: #b82a5e;
+}
+
+.nav-link {
+    font-weight: bold;
+}
+
+/* Corazones flotantes*/
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+    opacity: 0.7;
+}
+
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Estilos para el calendario */
+#calendar {
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    background: white;
+    display: inline-block;
+}
+
+#history {
+    margin-top: 20px;
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+#history h2 {
+    font-family: 'Playfair Display', serif;
+    color: #C21807; /* Rojo pasión */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.history-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Galeria de imagenes*/
+.gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.gallery img:hover {
+    transform: scale(1.05);
+}
+.modal-content img {
+    width: 100%;
+    
+    
+}
+
+/* Cartas*/
+#mensaje-secreto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.cartas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carta {
+    text-align: center;
+    position: relative;
+    width: 50%;
+    max-width: 100%;
+    padding: 5px;
+    background: repeating-linear-gradient(
+        white, white 28px, 
+        rgba(0, 0, 0, 0.2) 29px, 
+        white 30px
+    ); /* Crea líneas similares a un cuaderno */
+    background-size: cover;
+    font-family: 'Dancing Script', cursive; /* Fuente manuscrita */
+    font-size: 18px;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.carta .contenido-carta {
+    display: none;
+    padding: 5px;
+}
+
+.sobre {
+    cursor: pointer;
+    padding: 20px;
+    background: #ff5c8d;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.carta::before {
+    content: "💖💌";
+    font-size: 24px;
+    position: absolute;
+    top: -5px;
+    left: 5px;
+}
+
+.carta::after {
+    content: "💖💌";
+    font-size: 24px;
+    position: absolute;
+    bottom: -5px;
+    right: 5px;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 50%;
+        left: -50%;
+        padding-top: 20px;
+    }
+    
+    #sidebar.active {
+        left: 0;
+        width: 50%;
+    }
+
+    .toggle-btn {
+        font-size: 28px;
+        padding: 12px 18px;
+    }
+
+    #content {
+        margin-top: 100px;
+    }
+    .carta{
+        width: 100%;
+    }
+}

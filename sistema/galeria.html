@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Galeria</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Botón para abrir el menú -->
+    <button id="toggleSidebar" class="toggle-btn">&#9776;</button>
+
+    <!-- Menú lateral -->
+    <div id="sidebar">
+        <div class="p-3 text-center">
+            <div class="d-block align-items-center">
+                <img src="../img/foto.jpg" alt="Perfil" class="rounded-circle me-2" width="120" height="120">
+                <h4 class="mb-0">Ruth Nieto Huayta</h4>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item"><a href="principal.html" class="nav-link text-white">🏠 Inicio</a></li>
+            <li class="nav-item"><a href="historia.html" class="nav-link text-white">📖 Nuestra Historia</a></li>
+            <li class="nav-item"><a href="galeria.html" class="nav-link text-white">🖼️ Galeria</a></li>
+            <li class="nav-item"><a href="cartas.html" class="nav-link text-white">💌 Cartas</a></li>
+        </ul>
+    </div>
+    
+
+    <!-- Contenido principal -->
+    <div id="content">
+        <div class="container ">
+            <h1>📸 Nuestra Galería de Recuerdos</h1>
+            <p>Revive nuestros mejores momentos a través de imágenes que cuentan nuestra historia. 📸✨❤️</p>
+            
+            <ul class="nav nav-pills mb-3 justify-content-center" id="album-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="viajes-tab" data-bs-toggle="pill" data-bs-target="#viajes" role="tab">✈️ Viajes</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="momentos-tab" data-bs-toggle="pill" data-bs-target="#momentos" role="tab">🎉 Momentos Especiales</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="aniversarios-tab" data-bs-toggle="pill" data-bs-target="#aniversarios" role="tab">💖 Aniversarios</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="album-content">
+                <div class="tab-pane fade show active" id="viajes" role="tabpanel">
+                    <div class="row gallery">
+                        <div class="col-md-4"><img src="../img/IMG_20241224_182611.jpg" alt="🌍✈️ Nuestro Primer Viaje ✈️🌍" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" data-desc="Sin pensarlo mucho, agarramos la moto y nos fuimos rumbo a Tomayquichua 🏞️. Tú abrazándome fuerte, el viento en la cara y risas en el camino 😂. Al llegar, caminamos sin prisa, conversando de todo y de nada, disfrutando el momento. Cuando estábamos por regresar, vimos un lugar y no lo pensamos dos veces: nos sentamos a comer una buena humita y chicharrón con su cafecito caliente ☕😋. Ese sabor casero, la charla y tu sonrisa hicieron que todo valiera la pena. De regreso, el frío de la noche pegaba fuerte, pero tú te aferraste más a mí 💕. Fue un viaje corto, pero de esos que se quedan grabados para siempre. 😍"></div>
+                        <div class="col-md-4"><img src="../img/IMG_20241227_183954.jpg" alt="🌍✈️ Nuestro Segundo Viaje ✈️🌍" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" data-desc="Un viajecito a Churubamba 🏍️🌿, todo tranqui al inicio, te acompañé a llevar la comida de tu tortuga 🐢🍃. Luego fuimos a la plaza, disfrutando el paisaje y el ambiente hasta que el sol empezó a ocultarse 🌅. De regreso, tomamos un pequeño desvío... ya sabíamos lo que iba a pasar 😏. Llegamos a un lugar junto al río 🌊, viendo cómo anochecía, sacamos unas cuantas fotos bien bonitas 📸✨. Y bueno… después de eso, nos dieron unas ganas que 😏🔥. Cuando terminamos, no sé quién estaba más feliz, si yo o la moto, porque subió como si nada 😂🏍️💨."></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="momentos" role="tabpanel">
+                    <div class="row gallery">
+                        <div class="col-md-4"><img src="../img/IMG_20241109_204122.jpg" alt="El Día que nos conocimos 💕" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" data-desc="Tu cumpleaños fue la excusa perfecta para estar juntos. Desde el momento en que llegué, supe que esa noche sería especial. Entre risas y miradas en la discoteca, donde pues no bailamos ya que tenia miedo a que piensen cosas jejeje. Y luego… bueno, la noche no terminó ahí. Fue el inicio de algo que ni imaginábamos quiza yo si 😅😅, pero que hoy significa todo para mí. ❤️🔥"></div>
+                        <div class="col-md-4"><img src="../img/IMG_20241121_223155.jpg" alt="El dia del examen de FISICA MODERNA" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" data-desc="Fuimos por primera vez al hotel 😏😅. Según tú, mi amor, era para concentrarme en el examen 📚🤓, pero la verdad es que cuando no me salió un ejercicio, solo podía pensar en lo que habíamos hecho 😏🔥… qué recuerdos inolvidables. 😜❤️"></div>
+                        <div class="col-md-4"><img src="../img/IMG_20241221_200612.jpg" alt="🎓🥳 Graduación de tu Amiga 🎉" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" data-desc="Ese día la pasé increíble contigo ❤️. Bailamos, tomamos y disfrutamos como nunca 💃🍹. Llegamos a mi casa a las 3 a.m., pensando que no había nadie 😎, pero al despertar en la mañana… ¡sorpresa! Toda mi familia estaba ahí 😅😂. Intentamos disimular al salir, todo iba bien… hasta que te fuiste corriendo como si te estuvieran persiguiendo 😆🏃‍♀️💨. ¡Inolvidable! 🤣💕"></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="aniversarios" role="tabpanel">
+                    <div class="row gallery">
+                        <div class="col-md-4"><img src="../img/IMG_20250213_143223.jpg" alt="🎉❤️ Nuestro Tercer Mes ❤️🎉" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" data-desc="Tres meses juntos y cada momento ha sido especial ❤️. Ese día, sin esperarlo, me sorprendiste con un regalo increíble: una cajita bien envuelta que escondía la camiseta del Barcelona 😍⚽. No podía dejar de sonreír, porque más que un regalo, era un detalle lleno de amor y significado. Pero lo mejor de todo no fue la camiseta, sino compartir ese día contigo, celebrando lo nuestro. ¡Por muchos meses más juntos! 🥂💕"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal de imagen -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImage" class="img-fluid">
+                        <p id="imageDescription" class="mt-2 text-muted"></p> <!-- Descripción agregada aquí -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Función para alternar el menú y ocultar el botón
+            $('#toggleSidebar').click(function (event) {
+                event.stopPropagation(); // Evita que el clic se propague al body
+                $('#sidebar').toggleClass('active');
+                $('#toggleSidebar').toggle(); // Oculta el botón cuando se abre el menú
+            });
+    
+            // Cerrar el menú si se hace clic fuera de él y volver a mostrar el botón
+            $(document).click(function (event) {
+                if (!$(event.target).closest('#sidebar, #toggleSidebar').length) {
+                    $('#sidebar').removeClass('active');
+                    $('#toggleSidebar').show(); // Muestra el botón cuando se cierra el menú
+                }
+            });
+            
+                // Generar corazones flotantes
+                function createHeart() {
+                const heart = $('<div class="heart">❤️</div>');
+                const randomX = Math.random() * $(window).width();
+                heart.css({ left: randomX + 'px', bottom: '-20px' });
+                $('body').append(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+
+            setInterval(createHeart, 500);
+        });
+    </script>
+
+<script>
+    $(document).ready(function() {
+        $('.gallery img').click(function() {
+            $('#modalImage').attr('src', $(this).attr('src'));
+            $('#imageTitle').text($(this).attr('alt'));
+            $('#imageDescription').text($(this).data('desc')); // Agregando la descripción al modal
+        });
+    });
+</script>
+
+<script src="datos.js"></script>
+
+    
+    <audio id="backgroundMusic" autoplay loop style="display:none;">
+    <source src="../img/ytapi.org - Heredero - Coqueta.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio HTML5.
+    
+</body>
+</html>

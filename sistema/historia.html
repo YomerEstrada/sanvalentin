@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Botón para abrir el menú -->
+    <button id="toggleSidebar" class="toggle-btn">&#9776;</button>
+
+    <!-- Menú lateral -->
+    <div id="sidebar">
+        <div class="p-3 text-center">
+            <div class="d-block align-items-center">
+                <img src="../img/foto.jpg" alt="Perfil" class="rounded-circle me-2" width="120" height="120">
+                <h4 class="mb-0">Ruth Nieto Huayta</h4>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item"><a href="principal.html" class="nav-link text-white">🏠 Inicio</a></li>
+            <li class="nav-item"><a href="historia.html" class="nav-link text-white">📖 Nuestra Historia</a></li>
+            <li class="nav-item"><a href="galeria.html" class="nav-link text-white">🖼️ Galeria</a></li>
+            <li class="nav-item"><a href="cartas.html" class="nav-link text-white">💌 Cartas</a></li>
+        </ul>
+    </div>
+    
+    <!-- Contenido principal -->
+    <div id="content">
+        <h1>🌹 Nuestra Historia 🌹</h1>
+        <p>Nuestra historia contada en pequeños fragmentos de código, donde cada línea representa un recuerdo especial y cada error nos enseñó a ser más fuertes juntos. ❤️💻</p>
+        <br><br>
+        <p>Haz clic en la fecha que quieras y descifra un recuerdo especial almacenado en nuestra memoria. 📝💖</p>
+        
+        <!-- Calendario -->
+        <input type="date" id="calendar">
+        
+        <!-- Sección para mostrar la historia -->
+        <div id="history">
+            <h2 id="history-title"></h2>
+            <p id="history-text"></p>
+            <img id="history-image" class="history-image" src="" alt="">
+        </div>
+        
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            const historyData = {
+                "2024-11-09": {
+                    title: "El Día que nos conocimos 💕",
+                    text: "Tu cumpleaños fue la excusa perfecta para estar juntos. Desde el momento en que llegué, supe que esa noche sería especial. Entre risas y miradas en la discoteca, donde pues no bailamos ya que tenia miedo a que piensen cosas jejeje. Y luego… bueno, la noche no terminó ahí. Fue el inicio de algo que ni imaginábamos quiza yo si 😅😅, pero que hoy significa todo para mí. ❤️🔥",
+                    image: "../img/IMG_20241109_204122.jpg"
+                    
+                },
+                "2024-11-21": {
+                    title: "El dia del examen de FISICA MODERNA",
+                    text: "Fuimos por primera vez al hotel 😏😅. Según tú, mi amor, era para concentrarme en el examen 📚🤓, pero la verdad es que cuando no me salió un ejercicio, solo podía pensar en lo que habíamos hecho 😏🔥… qué recuerdos inolvidables. 😜❤️",
+                    image: "../img/IMG_20241121_223155.jpg"
+                },
+                "2024-12-21": {
+                    title: "🎓🥳 Graduación de tu Amiga 🎉",
+                    text: "Ese día la pasé increíble contigo ❤️. Bailamos, tomamos y disfrutamos como nunca 💃🍹. Llegamos a mi casa a las 3 a.m., pensando que no había nadie 😎, pero al despertar en la mañana… ¡sorpresa! Toda mi familia estaba ahí 😅😂. Intentamos disimular al salir, todo iba bien… hasta que te fuiste corriendo como si te estuvieran persiguiendo 😆🏃‍♀️💨. ¡Inolvidable! 🤣💕",
+                    image: "../img/IMG_20241221_200612.jpg"
+                },
+                "2024-12-24": {
+                    title: "🌍✈️ Nuestro Primer Viaje ✈️🌍",
+                    text: "Sin pensarlo mucho, agarramos la moto y nos fuimos rumbo a Tomayquichua 🏞️. Tú abrazándome fuerte, el viento en la cara y risas en el camino 😂. Al llegar, caminamos sin prisa, conversando de todo y de nada, disfrutando el momento. Cuando estábamos por regresar, vimos un lugar y no lo pensamos dos veces: nos sentamos a comer una buena humita y chicharrón con su cafecito caliente ☕😋. Ese sabor casero, la charla y tu sonrisa hicieron que todo valiera la pena. De regreso, el frío de la noche pegaba fuerte, pero tú te aferraste más a mí 💕. Fue un viaje corto, pero de esos que se quedan grabados para siempre. 😍",
+                   
+                    image: "../img/IMG_20241224_182611.jpg"
+                },
+                "2024-12-27": {
+                    title: "🌍✈️ Nuestro Segundo Viaje ✈️🌍",
+                    text: "Un viajecito a Churubamba 🏍️🌿, todo tranqui al inicio, te acompañé a llevar la comida de tu tortuga 🐢🍃. Luego fuimos a la plaza, disfrutando el paisaje y el ambiente hasta que el sol empezó a ocultarse 🌅. De regreso, tomamos un pequeño desvío... ya sabíamos lo que iba a pasar 😏. Llegamos a un lugar junto al río 🌊, viendo cómo anochecía, sacamos unas cuantas fotos bien bonitas 📸✨. Y bueno… después de eso, nos dieron unas ganas que 😏🔥. Cuando terminamos, no sé quién estaba más feliz, si yo o la moto, porque subió como si nada 😂🏍️💨.",
+                    image: "../img/IMG_20241227_183954.jpg"
+                },
+                "2025-02-10": {
+                    title: "🎉❤️ Nuestro Tercer Mes ❤️🎉",
+                    text: "Tres meses juntos y cada momento ha sido especial ❤️. Ese día, sin esperarlo, me sorprendiste con un regalo increíble: una cajita bien envuelta que escondía la camiseta del Barcelona 😍⚽. No podía dejar de sonreír, porque más que un regalo, era un detalle lleno de amor y significado. Pero lo mejor de todo no fue la camiseta, sino compartir ese día contigo, celebrando lo nuestro. ¡Por muchos meses más juntos! 🥂💕",
+                    image: "../img/IMG_20250213_143223.jpg"
+                }
+            };
+            
+
+            $('#calendar').on('change', function () {
+                const selectedDate = $(this).val();
+                if (historyData[selectedDate]) {
+                    $('#history-title').text(historyData[selectedDate].title);
+                    $('#history-text').text(historyData[selectedDate].text);
+                    $('#history-image').attr('src', historyData[selectedDate].image);
+                    $('#history').show();
+                } else {
+                    $('#history').hide();
+                }
+            });
+
+            $('#toggleSidebar').click(function (event) {
+                event.stopPropagation();
+                $('#sidebar').toggleClass('active');
+                $('#toggleSidebar').toggle();
+            });
+    
+            $(document).click(function (event) {
+                if (!$(event.target).closest('#sidebar, #toggleSidebar').length) {
+                    $('#sidebar').removeClass('active');
+                    $('#toggleSidebar').show();
+                }
+            });
+
+                // Generar corazones flotantes
+            function createHeart() {
+                const heart = $('<div class="heart">❤️</div>');
+                const randomX = Math.random() * $(window).width();
+                heart.css({ left: randomX + 'px', bottom: '-20px' });
+                $('body').append(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+
+            setInterval(createHeart, 500);
+        });
+    </script>
+
+<script src="datos.js"></script>
+
+    
+<audio id="backgroundMusic" autoplay loop style="display:none;">
+<source src="../img/ytapi.org - Heredero - Coqueta.mp3" type="audio/mpeg">
+Tu navegador no soporta el audio HTML5.
+
+
+</body>
+</html>

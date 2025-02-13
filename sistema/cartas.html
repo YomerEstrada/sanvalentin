@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas que une</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="toggleSidebar" class="toggle-btn">&#9776;</button>
+
+    <div id="sidebar">
+        <div class="p-3 text-center">
+            <div class="d-block align-items-center">
+                <img src="../img/foto.jpg" alt="Perfil" class="rounded-circle me-2" width="120" height="120">
+                <h4 class="mb-0">Ruth Nieto Huayta</h4>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item"><a href="principal.html" class="nav-link text-white">🏠 Inicio</a></li>
+            <li class="nav-item"><a href="historia.html" class="nav-link text-white">📖 Nuestra Historia</a></li>
+            <li class="nav-item"><a href="galeria.html" class="nav-link text-white">🖼️ Galeria</a></li>
+            <li class="nav-item"><a href="cartas.html" class="nav-link text-white">💌 Cartas</a></li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <div id="cartas-container">
+            <h1>💌 Una Fecha que Nos Une 💌</h1>
+            <p>Ingresa una fecha especial y descubre el recuerdo hermoso y un mensaje secreto que guardamos juntos. 💖✨</p>
+            <input type="date" id="fecha-input" class="form-control w-50 mx-auto my-3">
+            <button id="verificar-btn" class="btn btn-primary">Verificar</button>
+            <div id="mensaje-secreto" class="mt-4 "></div>
+            <p class="mensaje-error" id="mensaje-error"></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#toggleSidebar').click(function (event) {
+                event.stopPropagation();
+                $('#sidebar').toggleClass('active');
+                $('#toggleSidebar').toggle();
+            });
+
+            $(document).click(function (event) {
+                if (!$(event.target).closest('#sidebar, #toggleSidebar').length) {
+                    $('#sidebar').removeClass('active');
+                    $('#toggleSidebar').show();
+                }
+            });
+
+            // Generar corazones flotantes
+        function createHeart() {
+            const heart = $('<div class="heart">❤️</div>');
+            const randomX = Math.random() * $(window).width();
+            heart.css({ left: randomX + 'px', bottom: '-20px' });
+            $('body').append(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
+        });
+
+        // Diccionario con fechas y mensajes personalizados
+        const fechasEspeciales = {
+            "2024-11-09": `
+                <h3>Para quien hizo mi mundo más bonito ❤️</h3>
+                <p>El 9 de noviembre siempre será una fecha especial, porque fue el día en que nuestras vidas se cruzaron de verdad. Tu cumpleaños fue la excusa perfecta para estar cerca de ti, para compartir risas, miradas y esa conexión que, aunque no lo sabíamos en ese momento, cambiaría todo.</p>
+                <p>Recuerdo cada detalle de esa noche: la emoción de verte sonreír, la música de fondo, y ese pequeño nerviosismo que sentía al estar a tu lado. En la discoteca, quizás no bailamos mucho (bueno, por razones obvias 😅), pero lo que importaba era que estábamos juntos.</p>
+                <p>Y luego… bueno, la noche no terminó ahí. Fue solo el inicio de algo que, al menos yo, sí imaginaba. 😏🔥 Ahora, con el tiempo, sé que ese día marcó el comienzo de algo hermoso, algo que hoy significa todo para mí.</p>
+                <p>Gracias por ser parte de mi historia, por hacer cada momento especial y por ser tú.</p>
+                <p><strong>Con todo mi cariño,<br>[Yomer] ❤️</strong></p>
+            `,
+            "2024-11-21": `
+                <h3>El día del examen... y algo más 😏</h3>
+                <p>21 de noviembre, una fecha que quedó grabada en mi memoria por dos razones. Primero, el examen de Física Moderna 📚🤓. Y segundo… bueno, ya sabemos lo que pasó antes de eso 😏🔥.</p>
+                <p>Fuimos por primera vez al hotel, sin excusas ni pretextos, solo porque queríamos estar juntos. Desde el momento en que cerramos la puerta, el mundo afuera dejó de existir. Entre risas, besos y miradas cómplices, el tiempo pasó volando. Todo se sintió tan natural, tan nuestro ❤️.
+                </p>
+                <p>Luego, llegó el momento del examen. Iba con la mente en blanco, pero no precisamente por la materia 😂. Aun así, todo me salió bien (para que no digas que fue distracción 😏). Después de salir del aula, solo quería verte de nuevo, abrazarte y reírnos de todo lo que habíamos vivido ese día.
+                
+                <p><strong>Definitivamente, un día para recordar... en todos los sentidos. ❤️🔥</strong></p>
+            `,
+            "2024-12-21": `
+                <h3>🎓🥳 Graduación de tu Amiga 🎉</h3>
+                <p>Esa noche fue increíble ❤️. Fuimos a la fiesta, disfrutamos, bailamos y celebramos hasta que llegó la hora de irnos 💃🍹. Llegamos a mi casa a las 3 a.m., todo tranquilo, sin hacer ruido… y ahí continuó lo nuestro 😏🔥.</p>
+                <p>Pero cuando amaneció, el suspenso empezó 😱. De la nada, escuchamos voces afuera… ¡mi familia ya estaba despierta! Nos quedamos callados, escuchando cada palabra, esperando el momento perfecto para que pudieras salir sin ser vista.
+                </p>
+                <p>Con toda la calma del mundo, lograste llegar hasta la puerta sin que nadie sospechara 😎. Pero justo cuando pensábamos que todo estaba bajo control, te ganó la adrenalina y saliste corriendo como si te persiguieran 😂🏃‍♀️💨. Yo solo me quedé mirándote, aguantando la risa para no hacer ruido.
+                
+                <p><strong>Definitivamente, una noche para recordar… y una escapada épica. 🤣💕</strong></p>
+            `,
+            "2024-12-24":  `
+                <h3>Nuestro Primer Viaje Juntos ❤️</h3>
+                <p>El 24 de diciembre siempre quedará marcado en mi corazón, porque fue nuestro primer viaje juntos, una de esas aventuras que no se planean, pero que terminan siendo inolvidables.</p>
+                <p>Sin pensarlo mucho, tomamos la moto y partimos rumbo a Tomayquichua 🏞️. Tú, abrazándome fuerte, el viento acariciándonos el rostro y las risas que hacían que el trayecto se sintiera aún más especial. No importaba el destino, lo importante era estar juntos.
+                </p>
+                <p>Al llegar, caminamos sin prisa, disfrutando de cada conversación, cada mirada. Luego, cuando el hambre empezó a hacer de las suyas, encontramos un pequeño lugar y nos dejamos llevar por el antojo. Humitas, chicharrón y un cafecito caliente ☕😋, el sabor perfecto para acompañar un momento que ya era especial por sí solo.
+                </p>
+                <p>De regreso, el frío de la noche intentaba colarse entre nosotros, pero en lugar de separarnos, hizo que te aferraras aún más a mí 💕. Fue un viaje corto, pero con recuerdos que se quedarán grabados para siempre.
+                </p>
+                <p>Gracias por compartir ese día conmigo, por hacer que cada instante sea especial y por ser parte de mi historia.
+                </p>
+                <p><strong>Con todo mi amor,<br> [Yomer] ❤️</strong></p>
+            `
+            ,
+            "2024-12-27":  `
+                <h3>Nuestro Segundo Viaje Juntos ❤️</h3>
+                <p>El 27 de diciembre fue otro día para recordar, nuestro segundo viaje juntos. Esta vez, el destino fue Churubamba 🏍️🌿, un plan sencillo pero especial, porque lo mejor siempre es estar contigo.
+                </p>
+                <p>Todo empezó tranquilo, fuimos a dejarle su comida a tu tortuga 🐢🍃 y luego dimos una vuelta por la plaza, disfrutando del ambiente y la calma del lugar. El sol empezó a ocultarse 🌅 y, cuando pensábamos regresar, decidimos tomar un pequeño desvío… ya sabíamos lo que iba a pasar 😏.
+                </p>
+                <p>Llegamos a un rincón escondido junto al río 🌊, viendo cómo caía la noche. Sacamos unas fotos bonitas 📸✨, pero lo que realmente quedó grabado en mi memoria no fueron las imágenes, sino el momento… y lo que vino después 😏🔥.
+                </p>
+                <p>Cuando todo terminó, no sé quién estaba más feliz, si yo o la moto, porque subió como si nada 😂🏍️💨. Son esos momentos inesperados los que hacen que cada viaje contigo sea único y especial. ❤️
+                </p>
+                <p>Cada vez que pienso en ese día, no puedo evitar sonreír. No importa si es un viaje largo o corto, si vamos cerca o lejos, mientras sea contigo, siempre será una aventura inolvidable. Y sé que aún nos esperan muchos más caminos por recorrer, muchas risas, muchos desvíos y, sobre todo, muchos momentos como ese que quedarán solo para nosotros.
+                </p>
+                <p><strong>Te quiero muchísimo, mi amor ❤️✨.</strong></p>
+            `,
+            "2025-02-10":  `
+                <h3>🎉❤️ Nuestro Tercer Mes ❤️🎉</h3>
+                <p>10 de febrero, tres meses juntos y cada día a tu lado ha sido un regalo que jamás imaginé recibir. ❤️✨
+                </p>
+                <p>Esa tarde, sin esperarlo, me sorprendiste con un detalle que me dejó sin palabras: una cajita bien envuelta 🎁, con la misma emoción con la que siempre me miras 😍. Al abrirla y ver la camiseta del Barcelona 🔵🔴⚽, mi corazón latió más fuerte, no solo porque era algo que me encantaba, sino porque detrás de ese regalo había amor, atención y ganas de verme feliz.
+                </p>
+                <p>Pero lo mejor de todo no fue la camiseta… fue verte sonreír mientras la sostenía en mis manos, fue sentir cómo cada pequeño gesto tuyo hace que mi mundo sea mejor 🌍💫. En estos tres meses hemos compartido risas 😂, abrazos, locuras 🤪 y momentos que sé que recordaré siempre. Contigo, cualquier instante se convierte en algo especial, cualquier detalle tiene un significado más profundo.
+                </p>
+                <p>Gracias por cada día, por cada beso 😘, por cada “te quiero” dicho sin miedo 🥰. Hoy celebro no solo estos tres meses, sino el hecho de que la vida me llevó hasta ti 💖. Y si así han sido los primeros meses, no puedo esperar por todo lo que viene.
+                </p>
+                
+                <p><strong>Por nosotros 🥂, por lo que somos y por lo que estamos construyendo juntos. <br/> [¡Te Quiero!, mi amor 💞]</strong></p>
+            `
+        };
+
+        document.getElementById("verificar-btn").addEventListener("click", function() {
+            const fechaIngresada = document.getElementById("fecha-input").value;
+            const mensaje = fechasEspeciales[fechaIngresada];
+
+            const mensajeSecreto = document.getElementById("mensaje-secreto");
+            mensajeSecreto.innerHTML = ""; // Limpiar el contenido anterior
+
+            if (mensaje) {
+                mensajeSecreto.innerHTML = `
+                    <div class="carta">
+                        <div class="sobre" onclick="abrirCarta(this)">
+                            <p>📩 Haz clic para abrir</p>
+                        </div>
+                        <div class="contenido-carta" style="display: none;">
+                            <p>${mensaje}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                alert("Oops! Esa no es la fecha correcta. Inténtalo de nuevo. 💕");
+            }
+        });
+
+        function abrirCarta(elemento) {
+            elemento.style.display = "none"; // Ocultar sobre
+            elemento.nextElementSibling.style.display = "block"; // Mostrar contenido de la carta
+        }
+    </script>
+
+
+    <script src="datos.js"></script>
+
+    
+    <audio id="backgroundMusic" autoplay loop style="display:none;">
+    <source src="../img/ytapi.org - Heredero - Coqueta.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio HTML5.
+
+</body>
+</html>
